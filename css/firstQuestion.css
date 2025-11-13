@@ -1,0 +1,106 @@
+/* ===== 背景（アンケートと統一） ===== */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('./../img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+}
+
+/* ===== 全体コンテナ ===== */
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 24px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== タイトル ===== */
+.container h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* ===== 説明文 ===== */
+.container p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+/* ================================
+   フォームレイアウト（横並び）
+   ================================ */
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 14px 0;
+}
+
+/* 左側ラベル（ニックネーム / 年齢） */
+.form-row label {
+    min-width: 120px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: right;
+}
+
+/* 入力欄（横並び用） */
+.form-row input[type="text"],
+.form-row input[type="number"] {
+    width: 180px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1.1rem;
+}
+
+/* ===== 性別の行 ===== */
+.gender-row {
+    margin-top: 20px;
+}
+
+.gender-group {
+    display: flex;
+    align-items: center;
+}
+
+.gender-group label {
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+/* ===== 次へボタン（アンケートと統一） ===== */
+#user-info-form button[type="submit"] {
+    background: linear-gradient(135deg, #6fd67b, #3fa34d);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 26px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    margin-top: 30px;
+}
+
+#user-info-form button[type="submit"]:hover {
+    background: linear-gradient(135deg, #80e18a, #44b858);
+    transform: scale(1.05);
+}
+
+#user-info-form button[type="submit"]:active {
+    transform: scale(0.97);
+}

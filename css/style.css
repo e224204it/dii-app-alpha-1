@@ -35,7 +35,6 @@
     font-size: 1rem;
 }
 
-/* 「一日当たりの摂取量：」 */
 #food-form label[for^="amt_"] {
     font-weight: 500;
 }
@@ -90,13 +89,12 @@ html, body {
     font-family: Arial, "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
 }
 
-/* スクロールできる中央寄せレイアウト */
 body {
     display: block;
     overflow-y: auto;
 }
 
-/* コンテナ */
+/* ===== コンテナ ===== */
 .container {
     width: 90%;
     max-width: 600px;
@@ -135,11 +133,11 @@ body {
     transition: width 0.4s ease;
 }
 
-/* ===== 米の種類チェックボックス（整列＋中央配置） ===== */
+/* ===== 米の種類チェックボックス ===== */
 .rice-type-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* チェックボックス左揃え */
+    align-items: flex-start;
     justify-content: center;
     margin: 30px auto;
     padding: 20px;
@@ -148,14 +146,12 @@ body {
     background: rgba(255, 255, 255, 0.6);
 }
 
-/* タイトル */
 .rice-type-section h3 {
     text-align: center;
     width: 100%;
     margin-bottom: 12px;
 }
 
-/* 各行の配置 */
 .rice-type-section label {
     display: flex;
     align-items: center;
@@ -165,23 +161,21 @@ body {
     justify-content: flex-start;
 }
 
-/* チェックボックスサイズ調整 */
 .rice-type-section input[type="checkbox"] {
     transform: scale(1.2);
     margin-right: 8px;
 }
 
-/* ===== 結果ページの表 ===== */
+/* ===== 結果ページのテーブル ===== */
 table {
-    margin: 40px auto;           /* ページ中央に配置 */
+    margin: 40px auto;
     border-collapse: collapse;
-    background-color: white;     /* 背景を白に */
-    border-radius: 8px;          /* 角を少し丸く */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* ふんわり浮かせる */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
 
-/* テーブル全体のフォント */
 table, th, td {
     border: 1px solid #333;
     font-size: 1rem;
@@ -189,18 +183,16 @@ table, th, td {
     padding: 8px 16px;
 }
 
-/* 見出し行 */
 th {
     background-color: #f5f5f5;
     font-weight: bold;
 }
 
-/* 偶数行の色を少し変えて見やすく */
 tr:nth-child(even) {
     background-color: #fafafa;
 }
 
-/* タイトル */
+/* ===== 結果タイトル ===== */
 .result-title {
     text-align: center;
     font-size: 1.6rem;
@@ -209,8 +201,9 @@ tr:nth-child(even) {
     margin-bottom: 20px;
 }
 
-/* CSVダウンロードボタン（ポップスタイル） */
-#downloadCsvBtn {
+/* ===== ダウンロード/送信ボタン共通デザイン ===== */
+#downloadCsvBtn,
+#sendToSheet {
     background: linear-gradient(135deg, #6fd67b, #3fa34d);
     color: #fff;
     border: none;
@@ -221,24 +214,49 @@ tr:nth-child(even) {
     cursor: pointer;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
-    display: block;              /* ボタンをブロックにして */
-    margin: 30px auto 40px auto; /* ページ中央へ */
+    display: block;
+    margin: 20px auto;
     text-align: center;
 }
 
-#downloadCsvBtn:hover {
+#downloadCsvBtn:hover,
+#sendToSheet:hover {
     background: linear-gradient(135deg, #80e18a, #44b858);
     transform: scale(1.05);
 }
 
-#downloadCsvBtn:active {
+#downloadCsvBtn:active,
+#sendToSheet:active {
     transform: scale(0.97);
 }
 
-/* スマホでも整うように調整 */
+/* スマホ対応 */
 @media (max-width: 480px) {
-    #downloadCsvBtn {
+    #downloadCsvBtn,
+    #sendToSheet {
         font-size: 16px;
         padding: 10px 20px;
     }
 }
+
+
+.note-text {
+    font-size: 0.95rem;
+    color: #444;
+    text-align: right;
+    opacity: 0.9;
+
+    background-color: white;
+
+    margin-top: -100px;
+
+    width: fit-content;
+    padding: 4px 12px;
+
+    /* 背景透明 */
+
+    /* 中央寄せ */
+    margin-left: auto;
+    margin-right: auto;
+}
+

@@ -1,5 +1,8 @@
 import { loadFoods } from "./loadData.js";
 
+const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+console.log("ユーザー情報: ", userInfo);
+
 export const userSelections = {};
 const freqMap = { "毎日": 1, "週5-6": 5.5 / 7, "週2-4": 3 / 7, "週1": 1 / 7, "月1-3": 1 / 15, "無": 0 };
 
@@ -73,7 +76,7 @@ export async function generateForm(pageNum) {
             <div id="form_${foodName}">
                 一日当たりの摂取量：
                 <button type="button" onclick="changeAmount('${foodName}', -0.5)">ー</button>
-                <input type="number" id="amt_${foodName}" name="amt_${foodName}" value="${saved.amount}" min="0.5" max="5.0" step="0.5">
+                <input type="number" id="amt_${foodName}" name="amt_${foodName}" value="${saved.amount}" min="0" max="5.0" step="0.5">
                 <button type="button" onclick="changeAmount('${foodName}', 0.5)">＋</button>
             </div>
         `;

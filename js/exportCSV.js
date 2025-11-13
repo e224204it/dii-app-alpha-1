@@ -18,6 +18,7 @@ function todayISO() {
 export async function exportToCSV() {
     // localStorageから回答を復元
     const stored = localStorage.getItem("userSelections");
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
     if (!stored) {
         alert("アンケート結果が見つかりません。");
         return;
@@ -45,8 +46,16 @@ export async function exportToCSV() {
     // 3行目：摂取量
     const amtRow = ["摂取量", ...orderedFoodNames.map(name => selections[name]?.amount ?? ""), "", ""];
 
+    // ユーザ情報
+    const userInfoRows = [
+        ["ニックネーム", userInfo.nickname || ""],
+        ["性別", userInfo.gender || ""],
+        ["年齢", userInfo.age || ""],
+        [""]
+    ];
+
     // CSVの生成
-    const rows = [header, freqRow, amtRow];
+    const rows = [...userInfoRows, header, freqRow, amtRow];
     const csv = "\uFEFF" + rows.map(r => r.map(csvEscape).join(",")).join("\n");
 
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
@@ -63,6 +72,7 @@ export async function exportToCSV() {
 // スプレッドシート
 export async function sendToGoogleSheet() {
     const stored = localStorage.getItem("userSelections");
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
     if (!stored) {
         alert("アンケート結果が見つかりません。");
         return;
@@ -70,7 +80,6 @@ export async function sendToGoogleSheet() {
 
     const storedData = JSON.parse(stored);
     const riceTypes = storedData.riceTypes || [];
-
     const selections = { ...storedData };
     delete selections.riceTypes;
 
@@ -87,10 +96,10 @@ export async function sendToGoogleSheet() {
     });
 
     // Googleスプレッドシートへ送信
-    await fetch(`https://corsproxy.io/?https://script.google.com/macros/s/AKfycbzo0D-CgZtiD07FC2fTfkrdUMzDiQB4qQFGSbsj3cSDI0CB15LgqDh67wk3KzqmatDTow/exec`, {
+    await fetch("/.netlify/functions/send-to-gas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rows })
+        body: JSON.stringify({ userInfo, rows })
     });
     
     alert("Googleスプレッドシートに送信しました！");

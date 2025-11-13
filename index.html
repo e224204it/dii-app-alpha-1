@@ -1,30 +1,82 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>DIIアプリ</title>
+  <link rel="stylesheet" href="./css/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>食事アンケート</h1>
-        <div id="progress-container">
-            <p id="progress-text">ページ 1 / 5</p>
-            <div id="progress-bar">
-                <div id="progress-fill"></div>
-            </div>
-        </div>
-        
-        <div id="food-form"></div>
-
-        <div class="navigation">
-            <button id="prevBtn"  disabled>前へ</button>
-            <button id="nextBtn">次へ</button>
-            <button id="finishBtn" style="display: none;">完了</button>
-        </div>
+  <div class="container">
+    <!-- 背景のフルーツイラスト -->
+    <div class="fruit-bg" aria-hidden="true">
+      <svg viewBox="0 0 390 844" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#f6fff6"/>
+            <stop offset="100%" stop-color="#fffaf2"/>
+          </linearGradient>
+          <filter id="drop" x="-30%" y="-30%" width="160%" height="160%">
+            <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.1"/>
+          </filter>
+        </defs>
+        <rect width="390" height="844" fill="url(#bg)" />
+        <g transform="translate(60,120)" filter="url(#drop)">
+          <circle r="28" fill="#ff6b6b" />
+          <rect x="-2" y="-34" width="4" height="10" rx="1.5" fill="#2f7a28"/>
+        </g>
+        <g transform="translate(310,240)" filter="url(#drop)">
+          <circle r="26" fill="#ffa94d" />
+        </g>
+        <g transform="translate(80,620)" filter="url(#drop)">
+          <path d="M0 -26 C16 -22, 22 10, 0 28 C-22 10, -16 -22, 0 -26 Z" fill="#ff4b6b"/>
+          <path d="M-8 -28 L0 -36 L8 -28 Z" fill="#58b457"/>
+        </g>
+        <g transform="translate(310,700)" filter="url(#drop)">
+          <ellipse rx="28" ry="20" fill="#fff475" />
+        </g>
+      </svg>
     </div>
 
-    <script type="module" src="./js/navigation.js"></script>
+    <!-- コンテンツ部分 -->
+    <div class="content">
+      <div class="title-area">
+        <h1>DIIアプリ</h1>
+        <p class="catchphrase">あなたの学びをサポートするアプリです</p>
+        <h3>久留米大学・久留米工業大学　作</h3>
+      </div>
+
+      <!-- 入力フォーム -->
+      <form class="user-form">
+        <div class="input-group">
+          <label for="nickname">👤 ニックネーム</label>
+          <input id="nickname" type="text" placeholder="例：けんた" required>
+        </div>
+
+        <div class="input-group">
+          <label for="age">🎂 年齢</label>
+          <input id="age" type="number" min="0" max="120" placeholder="年齢を入力" required>
+        </div>
+
+        <div class="input-group">
+          <label for="gender">🚻 性別</label>
+          <div class="custom-select">
+            <select id="gender" required>
+              <option value="">選択してください</option>
+              <option value="男性">男性</option>
+              <option value="女性">女性</option>
+              <option value="その他">その他</option>
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <!-- スタートボタン -->
+      <a href="questionnaire.html" class="start-btn">スタート</a>
+    </div>
+  </div>
+
+  <script src="./js/index.js"></script>
 </body>
 </html>

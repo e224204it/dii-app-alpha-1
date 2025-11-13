@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>あなたについて</title>
+    <link rel="stylesheet" href="./css/firstQuestion.css">
+</head>
+<body>
+    <div class="container">
+        <h1>あなたについて</h1>
+        <p>初めにあなたのことについて質問させてください</p>
+
+        <form id="user-info-form">
+            <div class="form-row">
+                <label for="nickname">ニックネーム：</label>
+                <input type="text" id="nickname" name="nickname" required><br><br>
+            </div>
+            
+            <div class="form-row">
+                <label for="age">年齢：</label>
+                <input type="number" name="age" id="age" min="0" max="120" required>
+            </div>
+
+            <div class="form-row gender-row">
+                <label>性別：</label>
+                <div class="gender-group">
+                    <label><input type="radio" name="gender" value="男性" required>男性</label>
+                    <label><input type="radio" name="gender" value="女性" required>女性</label>
+                    <label><input type="radio" name="gender" value="その他" required>その他</label>
+                </div>
+            </div>
+
+            <button type="submit">次へ</button>
+        </form>
+    </div>
+
+    <script type="module" src="./js/firstQuestion.js"></script>
+</body>
+</html>
