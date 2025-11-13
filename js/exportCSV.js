@@ -102,5 +102,6 @@ export async function sendToGoogleSheet() {
         body: JSON.stringify({ userInfo, rows })
     });
     
-    alert("Googleスプレッドシートに送信しました！");
+    alert("回答を送信しました！");
+
 }
